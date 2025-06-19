@@ -1,0 +1,40 @@
+// Code your design here
+// chapter 3 , 3.5 exercise solutions
+
+// 1.a
+module ex_3_5_q1;
+
+reg [7:0] value;
+  reg [15:0] num;
+  reg signed [3:0] num2;
+  reg [15:0] num3;
+  initial begin
+    
+  value = 8'b01111011;
+end 
+  
+  
+  
+//1.b
+  
+  initial begin
+    num = 16'hx;
+  end
+    
+ //1.c
+  initial begin
+    num2 = 4'sd2;
+  end
+  
+  
+  //1.d
+  initial begin 
+    num3 = 16'h1234;
+  end 
+  
+endmodule 
+  
+  
+  
+
+  
