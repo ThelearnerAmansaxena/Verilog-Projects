@@ -1,0 +1,6 @@
+basic components of module are , module name, terminals or port list , end module .
+module keyword and module name , endmodule are mandatory
+
+module name;
+endmodule , 
+it may or may not have ports or terminals list.
