@@ -1,0 +1,6 @@
+// module for shift register
+module shift_reg(reg_out,reg_in,clock);
+input [3:0] reg_in;
+input clock;
+output [3:0] reg_out;
+endmodule
