@@ -1,0 +1,2 @@
+yes , a module may have ports but still not interact with its environment if ports are not connected.
+it can still have ports list during definition , but ports not define afterwards .
