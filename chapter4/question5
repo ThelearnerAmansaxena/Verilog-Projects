@@ -1,0 +1,2 @@
+// remaining part
+shift_reg(.reg_in(REG_IN),.clock(CLK),.reg_out(REG_OUT));
