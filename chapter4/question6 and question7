@@ -1,0 +1,8 @@
+// 6
+stimulus.REG_IN;
+stimulus.REG_OUT;
+stimulus.CLK;
+// 7
+stimulus.srl;
+stimulus.srl.clock;
+stimulus.srl.reg_in;
