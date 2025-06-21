@@ -1,0 +1,8 @@
+// question 4 solution 
+module stimulus;
+reg [3:0] REG_IN;
+reg CLK;
+wire [3:0] REG_OUT;
+
+shift_reg srl(REG_OUT,REG_IN,CLK); // ASSUME SHIFT REG ALREADY DEFINED
+endmodule
