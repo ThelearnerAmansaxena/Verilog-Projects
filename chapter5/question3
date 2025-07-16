@@ -1,0 +1,37 @@
+// Code your design here
+`timescale 1ns/1ps
+
+module adder_4bit(sum, c_out, a , b , c_in);
+
+  output [3:0] sum;
+  output c_out;
+  input [3:0] a,b;
+  input c_in;
+  
+  wire c1 ,c2, c3;
+  
+  adder_1bit add0(sum[0],c1,a[0],b[0],c_in);
+  adder_1bit add1(sum[1],c2,a[1],b[1],c1);
+  adder_1bit add2(sum[2],c3,a[2],b[2],c2);
+  adder_1bit add3(sum[3],c_out,a[3],b[3],c3);
+  
+  
+endmodule
+
+module adder_1bit(Sum, C_out, A, B, C_in);
+
+  output Sum, C_out;
+  input A, B, C_in;
+
+  wire w1, w2, w3;
+
+  xor x1(w1, A, B);
+  xor x2(Sum, w1, C_in);
+
+  and a1(w2, w1, C_in);
+  and a2(w3, A, B);
+  or  o1(C_out, w2, w3);
+
+endmodule
+
+  
