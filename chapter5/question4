@@ -1,0 +1,46 @@
+// Code your design here
+`timescale 1ns/1ps
+
+module rs_latch(q,qbar,r,s);
+ 
+ input r,s;
+  output  reg q ,qbar;
+  
+  wire q1,qbar1;
+  
+  nor first(q1,qbar1,r);
+  nor second(qbar1,q1,s);
+  
+  assign q = q1;
+  assign qbar = qbar1;
+  
+endmodule
+
+
+
+//testbench
+
+// Code your testbench here
+// or browse Examples
+`timescale 1ns/1ps
+module stimulus;
+reg S,R;
+wire Q,Qbar;
+
+  rs_latch latch1(Q,Qbar,R,S);
+  
+  initial begin
+    $monitor("time = %t s = %b r = %b qn+1 = %b",$time,S,R,Q);
+    
+  end
+  
+ initial begin
+ 
+  #10 S = 0; R = 0; 
+  #10 S = 1; R = 0; 
+  #10 S = 0; R = 0; 
+  #10 S = 0; R = 1; 
+  #10 $finish;
+end
+
+endmodule
