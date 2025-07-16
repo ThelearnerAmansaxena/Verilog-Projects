@@ -1,0 +1,35 @@
+`timescale 1ns/1ps
+
+
+  
+module my_or(out,in1,in2);  // my or gate
+
+output out;
+input in1,in2;
+
+wire s1,s2;
+my_not nn1(s1,in1);
+my_not nn2(s2,in2);
+
+nand n1(out,s1,s2);
+
+endmodule 
+
+module my_not(out,in1);   // my not gate
+
+output out;
+input in1;
+
+nand n1(out,in1,in1);
+
+endmodule
+
+
+module my_and(out,a,b);   // my and gate
+output out;
+input a,b;
+wire s1;
+nand n1(s1,a,b);
+my_not not1(out,s1);
+
+endmodule
