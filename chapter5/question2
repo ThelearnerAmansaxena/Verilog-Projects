@@ -1,0 +1,105 @@
+// Code your design here
+`timescale 1ns/1ps
+
+
+  
+module my_or(out,in1,in2);  // my or gate
+
+output out;
+input in1,in2;
+
+wire s1,s2;
+my_not nn1(s1,in1);
+my_not nn2(s2,in2);
+
+nand n1(out,s1,s2);
+
+endmodule 
+
+module my_not(out,in1);   // my not gate
+
+output out;
+input in1;
+
+nand n1(out,in1,in1);
+
+endmodule
+
+
+module my_and(out,a,b);   // my and gate
+output out;
+input a,b;
+wire s1;
+nand n1(s1,a,b);
+my_not not1(out,s1);
+
+endmodule
+
+
+
+module my_xor(out,x,y);
+input x,y;
+output out;
+ wire s1,s2,s3,s4;
+  
+  my_not not0(s2,y);
+  my_not not1(s3,x);
+  my_and and0(s1,x,s2);
+  my_and and1(s4,s3,y);
+  my_or or1(out,s1,s4);
+  
+  
+endmodule
+
+// testbench
+// Code your testbench here
+// or browse Examples
+`timescale 1ns/1ps
+
+
+module stimulus;
+
+reg X,Y;
+wire OUT;
+ 
+  my_xor xor0(OUT,X,Y);
+ initial begin
+   $monitor("time = %t, x = %b  y = %b  output = %b ",$time,X,Y,OUT);
+   
+   
+ end
+  
+  
+  initial begin
+    
+    X=0; Y=0;
+    
+    #10 X=0; Y=0;
+    #10 X=0; Y=1;
+    #10 X=1; Y=0;
+    #10 X=1; Y=1;
+    
+    #10 $finish;
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
