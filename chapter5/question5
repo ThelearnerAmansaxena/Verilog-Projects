@@ -1,0 +1,45 @@
+// Code your design here
+`timescale 1ns/1ps
+module two_to_one_mux(out,in1,in0,s);
+
+output out;
+input in0,in1,s;
+  
+ 
+  bufif0  #((1:2:3), (3:4:5), (5:6:7)) b1(out,in0,s);
+  bufif1  #((1:2:3), (3:4:5), (5:6:7)) b2(out,in1,s);
+
+  
+  
+endmodule 
+
+// Code your testbench here
+// or browse Examples
+`timescale 1ns/1ps
+  module stimulus;
+  
+    wire OUTPUT;
+    reg IN0,IN1,S;
+  
+    two_to_one_mux mux0(OUTPUT,IN1,IN0,S);
+  
+    initial begin
+    
+    $monitor("time = %t ,  s = %b , out = %b",$time,S,OUTPUT);
+    
+    
+    end
+  
+    initial begin
+    
+      IN0 = 0; IN1 =1;
+    
+      $display ("in0 = %b, in1 = %b ",IN0,IN1);
+      
+      #15 S=0;
+      #15 S=1;
+      #15 $finish;
+      
+    end
+  
+endmodule
